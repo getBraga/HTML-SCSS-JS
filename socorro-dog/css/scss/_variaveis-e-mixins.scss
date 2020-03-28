@@ -1,0 +1,63 @@
+$cor-primaria: #ff6961;
+$cor-segundaria: #000;
+$cor-main: #fff;
+$cor-verde: green;
+$cor-amarelo: yellow; 
+$cor-cinza: #c6c4c4;
+$font-1:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+$font-2: 'Aref Ruqaa', serif;
+$large-device: 960px;
+$medium-device: 720px;
+$small-device: 400px;
+
+@function em($pixel, $tamanho:16) {
+  @return $pixel / $tamanho + em;
+}
+
+@mixin tamanho ($size) {
+  @if $size == 9 {
+    font-size:  em(9);
+    line-height: em(10, 9);
+  }
+  @else if $size == 12 {
+    font-size:  em(12);
+    line-height: em(30, 12);
+  }
+  @else if $size == 18 {
+    font-size:  em(18);
+    line-height: em(30, 18);
+  }
+  @else if $size == 20 {
+    font-size:  em(20);
+    line-height: em(30, 20);
+  }
+  @else if $size == 22 {
+    font-size:  em(22);
+    line-height: em(30, 22);
+ }
+}
+
+@mixin device($size) {
+  @if $size == large {
+    @media screen and (min-width: $large-device) {
+      @content;
+    }
+  }
+  @else if $size == medium {
+    @media screen and (min-width: $medium-device ) and (max-width: $large-device - 1) {
+      @content;
+    }
+  }
+  @else if $size == small {
+    @media screen and (max-width: $medium-device - 1) {
+      @content;
+    }
+  }
+}
+
+
+@mixin box-shadow($shadow...) {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  box-shadow: $shadow; 
+}
